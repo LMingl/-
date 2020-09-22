@@ -22,3 +22,10 @@ That is, they don't necessarily evaluate every operand.
 
 #### higher-order function 高阶函数
 - 未掌握知识点
+高阶函数(高阶函数就是操作函数的函数 )
+高阶函数有以下这些特性，的原因是：在Python中function被认为是first-class的
+1. 函数作为参数
+2. 函数作为返回值
+3. 嵌套定义
+
+lab02 : 未完成Q8

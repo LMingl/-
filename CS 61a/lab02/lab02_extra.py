@@ -36,6 +36,13 @@ def composite_identity(f, g):
     False
     """
     "*** YOUR CODE HERE ***"
+    def h(x):
+        if compose1(f, g)(x) == compose1(g, f)(x):
+            return True
+        else:
+            return False 
+    return h
+
 
 def count_cond(condition):
     """Returns a function with one parameter N that counts all the numbers from
@@ -65,6 +72,15 @@ def count_cond(condition):
     8
     """
     "*** YOUR CODE HERE ***"
+    def count_n(n):
+        i, count = 1, 0
+        while i <= n:
+            if condition(n, i):
+                count += 1
+            i += 1
+        return count
+    return count_n
+        
 
 def cycle(f1, f2, f3):
     """Returns a function that is itself a higher-order function.
@@ -93,3 +109,23 @@ def cycle(f1, f2, f3):
     19
     """
     "*** YOUR CODE HERE ***"
+    #solution 1: currying
+    def cycle_n(n):
+        def cycle_f(f, x):
+            return f(x)
+        while n >= 0:
+            if n == 0:
+                m = x
+            if n == 1:
+                m = cycle_f(f1, x) 
+            if n == 2:
+                m = cycle_f(f2, x)
+            n -= 3
+        
+
+
+
+        return cycle_n
+
+    #solution 2:
+
