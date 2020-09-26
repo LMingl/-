@@ -26,6 +26,17 @@ def gcd(a, b):
     40
     """
     "*** YOUR CODE HERE ***"
+    if a > b:
+        big, small = a, b
+    else:
+        big, small = b, a
+
+    if big % small == 0:
+        return small
+    else:
+        return gcd(small, big % small)
+
+
 
 def ten_pairs(n):
     """Return the number of ten-pairs within positive integer n.
@@ -38,3 +49,18 @@ def ten_pairs(n):
     6
     """
     "*** YOUR CODE HERE ***"
+    def times():
+        quotient, m = n // 10, n % 10
+        sums = 0
+        while quotient:
+            if(quotient % 10) + m == 10:
+                sums += 1
+            quotient = quotient // 10
+        return sums
+
+    if n // 10 == 0:
+        return 0
+
+    return ten_pairs(n // 10) + times()
+    
+    
