@@ -11,6 +11,17 @@ def is_prime(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    def divide(m):
+        if n == m:
+            return True
+        elif n % m == 0:
+            return False
+        else:
+            return divide(m + 1)
+
+    return True if n == 1 else divide(2)    
+
+
 
 def gcd(a, b):
     """Returns the greatest common divisor of a and b.
@@ -49,8 +60,7 @@ def ten_pairs(n):
     6
     """
     "*** YOUR CODE HERE ***"
-    def times():
-        quotient, m = n // 10, n % 10
+    def times(quotient, m):
         sums = 0
         while quotient:
             if(quotient % 10) + m == 10:
@@ -58,9 +68,6 @@ def ten_pairs(n):
             quotient = quotient // 10
         return sums
 
-    if n // 10 == 0:
-        return 0
-
-    return ten_pairs(n // 10) + times()
+    return 0 if n // 10 == 0 else ten_pairs(n // 10) + times(n // 10, n % 10)
     
     
