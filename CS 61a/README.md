@@ -30,6 +30,10 @@ That is, they don't necessarily evaluate every operand.
 - 未掌握知识点2
 一种交替嵌套的情况：
 
+- 何种情况下使用高阶函数，不太会用
+
+
+
 ### 异常分析
 #### 异常1
 error: local variable [var] reference before assignment
@@ -42,11 +46,12 @@ error: local variable [var] reference before assignment
 
 
 ### lab完成情况
-
 #### lab01
 未通过的案例： 最后两个  原因：未知
 #### lab02 : 
 未完成Q8
+#### lab03:
+完成
 
 ### homework完成情况
 #### HW0
