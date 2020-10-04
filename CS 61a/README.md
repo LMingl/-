@@ -32,6 +32,15 @@ That is, they don't necessarily evaluate every operand.
 
 - 何种情况下使用高阶函数，不太会用
 
+#### Data Abstraction
+- 未掌握知识点1
+如何对数据进行抽象，使得在改变底层的数据结构时不会影响上层函数（调用底层函数的函数）
+需要良好的设计
+
+- 未掌握知识点2
+Abstraction Barriers
+见图片
+不要违反abstraction barriers, 这可以在变化时对程序做出最小的改变
 
 
 ### 异常分析
