@@ -32,6 +32,12 @@ That is, they don't necessarily evaluate every operand.
 
 - 何种情况下使用高阶函数，不太会用
 
+#### 迭代转化为递归
+
+first try implementing pingpong **using assignment statements and a while statement**.
+ Then, to convert this into a recursive solution, 
+ **write a helper function that has a parameter for each variable that changes values in the body of the while loop**.
+
 #### Data Abstraction
 - 未掌握知识点1
 如何对数据进行抽象，使得在改变底层的数据结构时不会影响上层函数（调用底层函数的函数）
@@ -67,6 +73,9 @@ error: local variable [var] reference before assignment
 完成
 #### HW1
 完成
+#### HW2
+Q6 Q7 Q8 not finished
+
 
 ### project完成情况
 #### project1：Hog
