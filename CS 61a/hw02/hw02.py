@@ -37,6 +37,11 @@ def product(n, term):
     True
     """
     "*** YOUR CODE HERE ***"
+    total = 1
+    while n > 0:
+        total, n = total * term(n), n - 1
+    return total
+
 
 def factorial(n):
     """Return n factorial for n >= 0 by calling product.
@@ -50,6 +55,7 @@ def factorial(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    return product(n, identity)
 
 def accumulate(combiner, base, n, term):
     """Return the result of combining the first n terms in a sequence and base.
@@ -70,6 +76,11 @@ def accumulate(combiner, base, n, term):
     19
     """
     "*** YOUR CODE HERE ***"
+    total = base
+    while n > 0:
+        total = combiner(total, term(n)) 
+        n -= 1
+    return total
 
 def summation_using_accumulate(n, term):
     """Returns the sum of term(1) + ... + term(n). The implementation
@@ -85,6 +96,7 @@ def summation_using_accumulate(n, term):
     True
     """
     "*** YOUR CODE HERE ***"
+    return accumulate(add, 0, n, term)
 
 def product_using_accumulate(n, term):
     """An implementation of product using accumulate.
@@ -99,6 +111,7 @@ def product_using_accumulate(n, term):
     True
     """
     "*** YOUR CODE HERE ***"
+    return accumulate(mul, 1, n, term)
 
 def compose1(f, g):
     """Return a function h, such that h(x) = f(g(x))."""
@@ -122,6 +135,17 @@ def make_repeater(f, n):
     5
     """
     "*** YOUR CODE HERE ***"
+    #case1
+    def repeater(value):
+        nonlocal n
+        if n == 0:
+            return value
+        else:
+            n -= 1
+            return repeater(f(value))
+    return repeater
+    #case2
+
 
 def num_sevens(n):
     """Returns the number of times 7 appears as a digit of n.
@@ -144,6 +168,12 @@ def num_sevens(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    if n == 7:
+        return 1
+    elif n < 10:
+        return 0
+    else:
+        return num_sevens(n // 10) + (1 if n % 10 == 7 else 0)
 
 def pingpong(n):
     """Return the nth element of the ping-pong sequence.
@@ -177,6 +207,16 @@ def pingpong(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    def up_down(index, current, flag):
+        if index == n:
+            return current 
+        elif (not flag if num_sevens(index) > 0 or index % 7 == 0 else flag):
+            return up_down(index+1, current-1, True)
+        else:
+            return up_down(index+1, current+1, False)
+
+    return up_down(1, 1, False)
+    #no gental, right?
 
 def count_change(amount):
     """Return the number of ways to make change for amount.
@@ -194,6 +234,43 @@ def count_change(amount):
     True
     """
     "*** YOUR CODE HERE ***"
+    #dp[m][sum]定义为前m种硬币构成sum值需要的组合数
+    # m #前m个硬币表示
+    
+    # dp = [[[]for i in range(m)] for j in range(amount)]
+    # for i in range(m):
+    #     dp[i][0] = 1
+    # for j in range(sum):
+    #     dp[0][j] = 0
+
+    # while i < m:
+    #     total = 0
+    #     while k < sum // 2 ** i:
+    #         total += dp[i-1][sum - k * 2 ** i]
+    #     dp[i][j] = total
+
+    #case2
+    # def dp(m, sum):
+    #     if sum == 0:
+    #         return 1
+    #     if m == 0:
+    #         return 0
+    #     total = 0
+    #     for k in range(amount // 2 ** (m-1)):
+    #         total += dp(m - 1, sum - k * (2 ** (m-1))) 
+    #     return total
+
+    # for i in range(1, amount):
+    #     if 2 ** (i-1) < amount and amount <= 2 ** i:
+    #         break
+
+    # return dp(i, amount)
+
+        
+
+
+
+
 
 
 
