@@ -48,6 +48,10 @@ Abstraction Barriers
 见图片
 不要违反abstraction barriers, 这可以在变化时对程序做出最小的改变
 
+However, the point of data abstraction is that we do not need
+to know how an abstract data type is implemented, but rather just how we can interact with and use the data type.
+
+
 
 ### 异常分析
 #### 异常1
