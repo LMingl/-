@@ -14,6 +14,7 @@ def squares(s):
     []
     """
     "*** YOUR CODE HERE ***"
+    return [round(sqrt(x)) for x in s if round(sqrt(x)) ** 2 == x]
 
 def key_of_min_value(d):
     """Returns the key in a dict d that corresponds to the minimum value of d.
@@ -24,3 +25,4 @@ def key_of_min_value(d):
     'c'
     """
     "*** YOUR CODE HERE ***"
+    return min(d, key=lambda x: d[x])

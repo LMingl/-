@@ -14,6 +14,9 @@ def couple(s1, s2):
     """
     assert len(s1) == len(s2)
     "*** YOUR CODE HERE ***"
+    return [[s1[i], s2[i]] for i in range(len(s1))]
+
+	
 
 def enumerate(s, start=0):
     """Returns a list of lists, where the i-th list contains i+start and
@@ -24,6 +27,7 @@ def enumerate(s, start=0):
     [[5, 'f'], [6, 'i'], [7, 'v'], [8, 'e']]
     """
     "*** YOUR CODE HERE ***"
+    return couple([start + i for i in range(len(s))], s)
 
 from math import sqrt
 def distance(city1, city2):
@@ -38,6 +42,9 @@ def distance(city1, city2):
     5.0
     """
     "*** YOUR CODE HERE ***"
+    lat_x = get_lat(city1) - get_lat(city2)
+    lon_y = get_lon(city1) - get_lon(city2)
+    return sqrt(lat_x ** 2 + lon_y ** 2)
 
 def closer_city(lat, lon, city1, city2):
     """
@@ -54,6 +61,15 @@ def closer_city(lat, lon, city1, city2):
     'Bucharest'
     """
     "*** YOUR CODE HERE ***"
+    aim_city = make_city('none', lat, lon)
+
+    if distance(aim_city, city1) == distance(aim_city, city2):
+        return 'distace equal'
+    elif distance(aim_city, city1) < distance(aim_city, city2):
+        return get_name(city1)
+    else:
+        return get_name(city2)
+
 
 def check_abstraction():
     """
