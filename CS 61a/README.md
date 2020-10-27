@@ -71,6 +71,8 @@ error: local variable [var] reference before assignment
 未完成Q8
 #### lab03:
 完成
+#### lab04
+完成
 
 ### homework完成情况
 #### HW0
@@ -79,6 +81,8 @@ error: local variable [var] reference before assignment
 完成
 #### HW2
 Q6 Q7 Q8 not finished
+#### HW3
+
 
 
 ### project完成情况
