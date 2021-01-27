@@ -51,6 +51,21 @@ Abstraction Barriers
 However, the point of data abstraction is that we do not need
 to know how an abstract data type is implemented, but rather just how we can interact with and use the data type.
 
+#### Tree- cloure property of a data type(数据类型的闭包属性)
+In general, a method for combining data values has a closure property if the result of combination can itself be combined using the same method
+
+
+
+#### 对Tree的ADT依旧没有搞懂
+
+
+
+
+#### 易忘点
+用文档字符串中的用例进行测试的语法
+
+
+
 
 
 ### 异常分析
@@ -73,6 +88,8 @@ error: local variable [var] reference before assignment
 完成
 #### lab04
 完成
+#### lab05
+acorn_finder(t)未完成   python中的树不太懂
 
 ### homework完成情况
 #### HW0
@@ -82,6 +99,7 @@ error: local variable [var] reference before assignment
 #### HW2
 Q6 Q7 Q8 not finished
 #### HW3
+Q3之后没有完成  还是树不太懂
 
 
 
