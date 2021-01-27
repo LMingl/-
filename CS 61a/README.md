@@ -112,6 +112,8 @@ error: local variable [var] reference before assignment
 完成
 #### lab05
 acorn_finder(t)未完成   python中的树不太懂
+#### lab06
+完成
 
 ### homework完成情况
 #### HW0
