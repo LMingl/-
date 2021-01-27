@@ -46,6 +46,15 @@ def add_chars(w1, w2):
     True
     """
     "*** YOUR CODE HERE ***"
+    assert len(w1) <= len(w2), "w1 must be the substring of w2"
+    if not len(w1):
+        return w2
+    else:
+        if w1[0] == w2[0]:
+            return add_chars(w1[1:], w2[1:])
+        else:
+            return w2[0] + add_chars(w1, w2[1:])
+
 
 def acorn_finder(t):
     """Returns True if t contains a node with the value 'acorn' and
@@ -65,6 +74,13 @@ def acorn_finder(t):
     True
     """
     "*** YOUR CODE HERE ***"
+    # if not is_leaf(t):
+    #     if label(t) == 'acorn':
+    #         return True
+    #     for _ in range(len(branches(t))):
+    #         return acorn_finder(branches(t))//遍历其中一棵子树
+    
+
 
 # Tree ADT
 def tree(label, branches=[]):
