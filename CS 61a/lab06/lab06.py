@@ -14,7 +14,12 @@ def make_adder_inc(n):
     >>> adder2(5)
     11
     """
-    "*** YOUR CODE HERE ***"
+    inc = -1 
+    def adder_inc(x):
+        nonlocal inc
+        inc += 1
+        return x + n + inc
+    return adder_inc
 
 def map(fn, lst):
     """Maps fn onto lst using mutation.
@@ -23,4 +28,8 @@ def map(fn, lst):
     >>> original_list
     [25, 1, 4, 0]
     """
-    "*** YOUR CODE HERE ***"
+    for i in range(len(lst)):
+        lst[i] = fn(lst[i])
+
+    
+
