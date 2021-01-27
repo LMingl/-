@@ -68,6 +68,19 @@ For example, the line balance = ... in withdraw, this assignment statement tells
 - 如果 nonlocal 修饰的变量没有被找到，报 SyntaxError
 - 当前帧中已经声明的变量不能再声明为 nonlocal 
 
+#### is 与 == 的区别
+<pre><code>
+>>> lst1 = [1, 2, 3, 4]
+>>> lst2 = [1, 2, 3, 4]
+>>> lst1 == lst2
+True
+>>> lst1 is lst2
+False
+</code></pre>
+lst1与lst2 的 identity 不同，尽管里面的内容相同，但用 is 会返回false
+
+我自己理解就是在环境中，他们的指向是不同的，所以identity不同，如果指向同一个对象（比如：list），那么identity就是相同的。
+
 
 
 ### 易忘点
