@@ -58,10 +58,19 @@ In general, a method for combining data values has a closure property if the res
 
 #### 对Tree的ADT依旧没有搞懂
 
+#### nonlocal
+在高阶函数中，如果我们不使用 nonlocal ，那我们只能访问父帧中变量的值，而不能改变父帧中变量的值。否则会报错的。
+解释：
+For example, the line balance = ... in withdraw, this assignment statement tells Python to expect a variable called balance inside withdraw's frame, so Python will not look in parent frames for this variable. However, notice that we tried to compute balance - amount before the local variable was created! That's why we get the UnboundLocalError
+
+当使用 nonlocal 时一些重要点需要注意：
+- 不能用nonlocal修饰全局变量，（全局变量就是定义在全局帧中的变量） 
+- 如果 nonlocal 修饰的变量没有被找到，报 SyntaxError
+- 当前帧中已经声明的变量不能再声明为 nonlocal 
 
 
 
-#### 易忘点
+### 易忘点
 用文档字符串中的用例进行测试的语法
 
 
