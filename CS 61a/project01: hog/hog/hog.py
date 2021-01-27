@@ -1,3 +1,4 @@
+
 """CS 61A Presents The Game of Hog."""
 
 from dice import six_sided, four_sided, make_test_dice
@@ -311,7 +312,15 @@ def max_scoring_num_rolls(dice=six_sided, num_samples=1000):
     1
     """
     # BEGIN PROBLEM 9
-    "*** YOUR CODE HERE ***"
+    biggest = 0
+    max_average = 0
+    for n in range(1, 11):
+        average = make_averaged(roll_dice, num_samples)(n, dice)
+        if max_average < average:
+            max_average = average
+            biggest = n
+    return biggest
+
     # END PROBLEM 9
 
 
@@ -336,14 +345,14 @@ def average_win_rate(strategy, baseline=always_roll(4)):
 
 def run_experiments():
     """Run a series of strategy experiments and report results."""
-    if True:  # Change to False when done finding max_scoring_num_rolls
+    if False:  # Change to False when done finding max_scoring_num_rolls
         six_sided_max = max_scoring_num_rolls(six_sided)
         print('Max scoring num rolls for six-sided dice:', six_sided_max)
 
     if False:  # Change to True to test always_roll(8)
         print('always_roll(6) win rate:', average_win_rate(always_roll(6)))
 
-    if False:  # Change to True to test bacon_strategy
+    if True:  # Change to True to test bacon_strategy
         print('bacon_strategy win rate:', average_win_rate(bacon_strategy))
 
     if False:  # Change to True to test swap_strategy
@@ -360,8 +369,13 @@ def bacon_strategy(score, opponent_score, margin=8, num_rolls=4):
     rolls NUM_ROLLS otherwise.
     """
     # BEGIN PROBLEM 10
-    return 4  # Replace this statement
+    # return 4  # Replace this statement
+    if free_bacon(opponent_score) >= margin:
+        return 0
+    else:
+        return num_rolls
     # END PROBLEM 10
+    #有一个参数没用，感觉不太对
 
 
 def swap_strategy(score, opponent_score, margin=8, num_rolls=4):
