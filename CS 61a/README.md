@@ -1,4 +1,10 @@
 ### 知识点
+
+#### 熟练使用环境图
+熟练使用 Environment Diagram 来分析Python 代码，可以方便理解很多问题。理解为函数调用帧在内存中状态（近似吧）
+非常有用!!!
+环境图分析的链接: http://pythontutor.com/composingprograms.html#mode=edit
+
 #### Boolean Operators 布尔操作
 未掌握知识点：
 - short-circuit
@@ -81,22 +87,34 @@ lst1与lst2 的 identity 不同，尽管里面的内容相同，但用 is 会返
 
 我自己理解就是在环境中，他们的指向是不同的，所以identity不同，如果指向同一个对象（比如：list），那么identity就是相同的。
 
-
+#### Pure function 与 Non-pure function
+Non-Pure Function 会有一定的副作用，会产生除返回值之外的额外的输出。
+<pre><code>
+>>>a = print("123")
+123
+>>>print(a)
+None
+</code></pre>
+print函数的返回总是None，代表什么都没有。
+有一个图很形象：见picture
 
 ### 易忘点
 用文档字符串中的用例进行测试的语法
+python3 -m doctest file.py
 
 
 
 
 
 ### 异常分析
+Debugging   推荐看一下 : https://inst.eecs.berkeley.edu/~cs61a/su19/articles/debugging.html
+
 #### 异常1
 error: local variable [var] reference before assignment
 这种情况出现的原因是不允许修改定义在父帧中的变量
 解决办法：
 1. 建立一个新的变量来存储新值
-2. 待定
+2. 使用 nonlocal
 
 
 
@@ -114,6 +132,8 @@ error: local variable [var] reference before assignment
 acorn_finder(t)未完成   python中的树不太懂
 #### lab06
 完成
+#### lab07
+Q1 完成
 
 ### homework完成情况
 #### HW0
