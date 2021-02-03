@@ -13,7 +13,15 @@ def paths(m, n):
     >>> paths(1, 157)
     1
     """
-    "*** YOUR CODE HERE ***"
+    if m == 1 and n == 1:
+        return 1
+    elif m == 1:
+        return paths(m, n-1) 
+    elif n == 1:
+        return paths(m-1, n)
+    else:
+        return paths(m-1, n) + paths(m, n-1)
+
 
 def num_trees(n):
     """How many full binary trees have exactly n leaves? E.g.,
@@ -76,9 +84,9 @@ def dict_to_lst(d):
     """
     result = []
     for _ in range(len(d)):
-        pair = min(d.items(), key=______________________)
-        d.pop(_________)
-        _______________________
+        pair = min(d.items(), key=lambda x: x[1])
+        d.pop(pair[0])
+        result.append(pair)
     return result
 
 # Tree ADT
