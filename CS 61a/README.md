@@ -98,6 +98,31 @@ None
 print函数的返回总是None，代表什么都没有。
 有一个图很形象：见picture
 
+#### 迭代器和生成器 
+iter(iterable)    next(iterator) 
+
+for语句的背后的实现：
+<pre><code>
+items = iter(list)
+try:
+    while True:
+        item = next(items)
+        print(item)
+except StopIteration as e:
+    pass
+
+</code></pre>
+
+生成器（generator): 迭代器的一种，通过生成器函数产生的
+生成器函数：包含yield关键词的函数，返回一个生成器，通过next(returned generator)进入生成器函数内部
+
+yield关键词：在当前位置暂停(所有的本地变量都会被保存),返回yeild之后表达式的值,在下一次调用继续从当前位置下一句继续执行
+
+yield from:
+yield from a 等价于 for i in a:  yield i
+
+
+
 ### 易忘点
 用文档字符串中的用例进行测试的语法
 python3 -m doctest file.py
@@ -146,7 +171,6 @@ Q4 Q5 树不清楚
 Q6 Q7 Q8 not finished
 #### HW3
 Q3之后没有完成  还是树不太懂
-
 
 
 ### project完成情况
