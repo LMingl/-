@@ -98,30 +98,87 @@ None
 print函数的返回总是None，代表什么都没有。
 有一个图很形象：见picture
 
-#### 迭代器和生成器 
-iter(iterable)    next(iterator) 
+#### 迭代器 
+产生的需求：
+不是一次性生成所有的值（所有的值不同时存在），而是按需计算，这样就不需要大块的内存来存放所有的值。类似于惰性计算，就是推迟数值的计算，直到需要的时候再进行计算。
+
+迭代器：能够一个接一个、按顺序获取值
+
+iter(iterable)   会调用对象中的__iter__方法 
+next(iterator)   会调用对象中的__next__方法
+
+调用next时，当容器中没有下一个值可以获取时会抛出 StopIteration 异常
 
 for语句的背后的实现：
 <pre><code>
 items = iter(list)
 try:
     while True:
-        item = next(items)
+        item = next(items)  // items.__next__()也可
         print(item)
 except StopIteration as e:
     pass
 
 </code></pre>
 
-生成器（generator): 迭代器的一种，通过生成器函数产生的
-生成器函数：包含yield关键词的函数，返回一个生成器，通过next(returned generator)进入生成器函数内部
+对迭代器调用 iter() 返回的还是这个迭代器，不是副本。
+
+生成一个迭代器的方法：
+- 调用 iter() 函数
+- 生成器函数返回生成器
+- 通过类(有 __iter__ 方法)实例化
+
+实现1：通过yield
+<pre><code>
+class Letter:
+    def __init__(self, start='a', end='d'):
+        self.start = start
+        self.end = end
+    def __iter__(self):
+        current = self.start
+        while current <= self.end:
+            yield current
+            current = chr(ord(current)+1
+</code></pre>
+
+实现2：__iter__ 和 __next__
+<pre><code>
+#__iter__被称为 iterable interface
+#__next__被称为 iteration interface
+class LetterIterator():
+    def __init__(self, start='a', end='d'):
+        self.next_letter = start
+        self.end = end
+    def __next__(self):
+        if self.next_letter == self.end:
+            raise StopIteration
+        letter = self.next_letter
+        self.next_letter = chr(ord(letter)+1)
+        return letter
+
+class Letter:
+    def __init__(self, start='a', end='d'):
+        self.start = start
+        self.end = end
+    def __iter__(self):
+        return LetterIterator(self.start, self.end)
+</code></pre>
+
+
+#### 生成器
+生成器（generator): 迭代器的一种(设计更复杂的迭代器)，通过生成器函数产生的
+生成器函数：包含yield关键词的函数(没有return语句)，返回一个生成器，通过next(returned generator)进入生成器函数内部
+生成器对象有 __iter__ 和 __next__ 方法。
+当生成器函数返回时，生成器抛出一个 StopIteration 异常
 
 yield关键词：在当前位置暂停(所有的本地变量都会被保存),返回yeild之后表达式的值,在下一次调用继续从当前位置下一句继续执行
 
 yield from:
-yield from a 等价于 for i in a:  yield i
+yield from a 等价于 
+for i in a:  
+   yield i
 
-
+4.2.9 看不太懂
 
 ### 易忘点
 用文档字符串中的用例进行测试的语法
