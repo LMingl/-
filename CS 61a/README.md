@@ -180,11 +180,19 @@ for i in a:
 
 4.2.9 看不太懂
 
+#### class  and  object
+`__init__ `是Python类中的构造器   （C++中有构造和析构）
+
+self 和该类实例化的对象相关联（the first one, self, is bound to the newly created Account object），当方法被调用时， self会自动与对象名称进行关联。
+
+类属性（也叫静态变量），在任何方法之外进行定义，类属性值可以在由同一个类实例化的所有对象之间共享，通过`类名.属性名`进行再赋值可以改变所有对象中相应属性的值，但是如果已经通过`实例名.属性名`进行赋值，优先使用这一个。
+
+接口：
+
+
 ### 易忘点
 用文档字符串中的用例进行测试的语法
 python3 -m doctest file.py
-
-
 
 
 
