@@ -225,7 +225,7 @@ acorn_finder(t)未完成   python中的树不太懂
 #### lab07
 Q4 Q5 树不清楚
 #### lab08
-
+Q4 go on 
 
 ### homework完成情况
 #### HW0
