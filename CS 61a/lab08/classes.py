@@ -154,9 +154,21 @@ class TutorCard(Card):
         >>> len(player2.deck.cards) == initial_deck_length - 3
         True
         """
-        "*** YOUR CODE HERE ***"
+        discard_cards_number = 3
+
+        if len(opponent.hand) < discard_cards_number:
+            print('no enought card in hands')
+            return
+        elif len(opponent.deck.cards) < discard_cards_number:
+            print('no enought card in deck')
+            return
+        else :
+            for i in range(discard_cards_number):
+                opponent.hand.pop(i)
+                opponent.draw()
+
         #Uncomment the line below when you've finished implementing this method!
-        #print('{} discarded and re-drew 3 cards!'.format(opponent.name))
+        print('{} discarded and re-drew 3 cards!'.format(opponent.name))
 
     def copy(self):
         """
@@ -180,7 +192,7 @@ class TACard(Card):
         >>> other_card.defense
         300
         """
-        "*** YOUR CODE HERE ***"
+        other_card.attack, other_card.defense = other_card.defense, other_card.attack
 
 
     def copy(self):
@@ -213,9 +225,19 @@ class InstructorCard(Card):
         >>> opponent_card.defense
         300
         """
-        "*** YOUR CODE HERE ***"
+        for x in range(len(player.hand)):
+            player.hand[x].attack += 300
+            player.hand[x].defense += 300
+
+        for y in range(len(player.deck.cards)):
+            player.deck.cards[y].attack += 300
+            player.deck.cards[y].defense += 300
+
+        player.hand.append(other_card.copy())
+        player.deck.cards.append(other_card.copy())
+
         #Uncomment the line below when you've finished implementing this method!
-        #print('{}\'s card added to {}\'s hand and deck!'.format(opponent.name, player.name))
+        print('{}\'s card added to {}\'s hand and deck!'.format(opponent.name, player.name))
 
     def copy(self):
         """
