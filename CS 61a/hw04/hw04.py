@@ -17,7 +17,14 @@ def make_fib():
     >>> fib() + sum([fib2() for _ in range(5)])
     12
     """
-    "*** YOUR CODE HERE ***"
+    pre = 0
+    p = 1
+    def fib():
+        nonlocal pre, p 
+        fib_num = pre
+        pre, p = p, pre + p 
+        return fib_num
+    return fib
 
 def make_withdraw(balance, password):
     """Return a password-protected withdraw function.
@@ -47,7 +54,20 @@ def make_withdraw(balance, password):
     >>> type(w(10, 'l33t')) == str
     True
     """
-    "*** YOUR CODE HERE ***"
+    incorrect_password = []
+    def withdraw(amount, unlock_password):
+        if len(incorrect_password) >= 3:
+            return 'Your account is locked. Attempts: ' + str(incorrect_password)
+        if password != unlock_password:
+            incorrect_password.append(unlock_password)
+            return "Incorrect password"
+        nonlocal balance
+        if amount > balance:
+            return 'Insufficient funds'
+        balance = balance - amount
+        return balance
+    return withdraw
+
 
 class Mint:
     """A mint creates coins by stamping on years.
@@ -85,17 +105,20 @@ class Mint:
         self.update()
 
     def create(self, kind):
-        "*** YOUR CODE HERE ***"
+        return kind(self.year)
 
     def update(self):
-        "*** YOUR CODE HERE ***"
+        self.year = Mint.current_year
 
 class Coin:
     def __init__(self, year):
         self.year = year
 
     def worth(self):
-        "*** YOUR CODE HERE ***"
+        if Mint.current_year - self.year > 50:
+            return self.cents + (Mint.current_year - self.year - 50)
+        else:
+            return self.cents
 
 class Nickel(Coin):
     cents = 5
@@ -140,7 +163,42 @@ class VendingMachine:
     >>> w.vend()
     'Here is your soda.'
     """
-    "*** YOUR CODE HERE ***"
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+        self.store_number = 0
+        self.balance = 0
+
+    def vend(self):
+        if self.store_number == 0:
+            return 'Machine is out of stock.'
+        else:
+            if self.balance < self.price:
+                return 'You must deposit ${0} more.'.format(self.price - self.balance)
+            elif self.balance == self.price:
+                self.balance = 0 
+                self.store_number -= 1
+                return 'Here is your {0}.'.format(self.name)
+            else:
+                changes = self.balance - self.price
+                self.balance = 0
+                self.store_number -= 1
+                return 'Here is your {0} and ${1} change.'.format(self.name, changes)
+
+    def deposit(self, amount):
+        if self.store_number > 0:
+            self.balance += amount
+            return 'Current balance: ${0}'.format(self.balance)
+        else:
+            return 'Machine is out of stock. Here is your ${0}.'.format(amount)
+
+    def restock(self, number):
+        self.store_number += number
+        return 'Current {0} stock: {1}'.format(self.name, self.store_number)
+
+
+
+
 
 def remove_all(link , value):
     """Remove all the nodes containing value in link. Assume that the
