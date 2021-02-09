@@ -236,8 +236,9 @@ Q4 go on
 #### HW2
 Q6 Q7 Q8 not finished
 #### HW3
-Q3之后没有完成  还是树不太懂
-
+Q3之后没有完成  还是树
+#### HW4
+Q5 Q6 没做
 
 ### project完成情况
 #### project1：Hog
