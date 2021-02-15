@@ -189,6 +189,74 @@ self 和该类实例化的对象相关联（the first one, self, is bound to the
 
 接口：
 
+#### generic function
+实现通用函数的方法：shared interfaces, type dispatching , type coercion
+
+##### shared interfaces
+通过使用接口和信息传递实现通用函数
+###### special method
+`__repr__`
+`__str__`
+`__init__`
+`__bool__`
+`__call__`
+<pre><code>
+class Addr:
+    def __init__(self, n):
+        self.n = n
+    def __call__(self, k):
+        return self.n + k
+
+add_three = Addr(4)
+add_three(4) #类似于函数调用
+</code></pre>
+``
+``
+###### 属性
+通过 `@property` 装饰器和函数（计算其他属性的零参数函数）来实现类中的一些属性和其他的属性保持固定的关系
+<pre><code>
+from math import atan2
+
+class ComplexRI:
+    def __init__(self, real, imag):
+        self.real = real
+        self.imag = imag
+    @property
+    def magnitude(self):
+        return (self.real ** 2 + self.imag ** 2) ** 0.5
+    @property
+    def angle(self):
+        return atan2(self.imag, self.real)
+    def __repr__(self):
+        return 'ComplexRI({0:g}, {1:g})'.format(self.real, self.imag)
+
+ri = ComplexRI(5, 12)
+ri.real
+
+ri.magnitude  #不需要函数调用
+
+</code></pre>
+装饰器： 有4种类型：
+函数装饰函数
+函数装饰类
+类装饰函数
+类装饰类
+
+装饰器本质上是高阶函数，@语法只是将函数传入装饰器函数，要想理解的更深刻，恢复普通的函数调用即可。
+Python中的函数是第一公民，函数是对象、变量、作为参数、作为返回值，体现了函数式编程的特性。
+
+##### Type dispatching
+
+
+
+
+
+##### Type coercion
+
+
+
+
+
 
 ### 易忘点
 用文档字符串中的用例进行测试的语法
@@ -226,7 +294,8 @@ acorn_finder(t)未完成   python中的树不太懂
 Q4 Q5 树不清楚
 #### lab08
 Q4 go on 
-
+#### lab09
+没开始
 
 ### homework完成情况
 #### HW0
@@ -239,7 +308,14 @@ Q6 Q7 Q8 not finished
 Q3之后没有完成  还是树
 #### HW4
 Q5 Q6 没做
+#### HW5
+没法做，
 
 ### project完成情况
 #### project1：Hog
 on going
+#### project2: typing_test
+not start
+#### project3: ants
+not start
+
