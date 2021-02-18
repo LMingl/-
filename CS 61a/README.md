@@ -254,8 +254,27 @@ Python中的函数是第一公民，函数是对象、变量、作为参数、�
 ##### Type coercion
 
 
+### 解释计算机程序
+从现在开始我们将作为语言的设计者，而不仅仅是程序语言的使用者。
 
+#### Scheme
+表达式：
+scheme采用前缀表达式的形式，如：`(+ (* 3 5) (- 10 6))`
 
+定义：
+define 
+`(define pi 3.14)` 
+`(define (<name> <formal parameters>) <body>)`
+
+lambda
+`(lambda (<formal-parameters>) <body>)`
+
+复合值：
+pairs 用cons函数实现，通过car和cdr来取值
+
+符号数据：
+引用
+`(list `a `b)`
 
 
 ### 易忘点
